@@ -11,7 +11,9 @@ Referencias:
 
 import Data.Char -- importar algunas funciones sobre datos de tipo Char
 import Data.List -- acceso a funciones como sort y nub (remdups)
-type String = [Char] -- innecesario, es para beneficio del lector
+import System.IO
+import Control.Monad (when)
+-- type String = [Char] -- innecesario, es para beneficio del lector
 
 -- Agrupar las palabras presentes en el título de una obra bibliográfica
 -- Notar que solo se desechan los caracteres en blanco.
@@ -135,9 +137,67 @@ printKwic ts = map putStrLn (kwic ts) -- esta también funciona (es lo mismo...)
 printKwicTitles ts = map putStrLn (kwicTitles ts)
 
 -- main = sequence_ (printKwic titles) -- titles está alambrado
-main = sequence_ (printKwic titles) -- titles está alambrado
+-- main = sequence_ (printKwic titles) -- titles está alambrado
 
--- PRUEBAS
+-- PRUEBAS]
 -- Títulos, para probar
 -- titles = ["As falls Wichita, so falls Wichita Falls", "The Yellow Submarine", "Kind of Blue", "The Mythical Man-Month"]
 titles = ["Descent of Man", "The Ascent of Man", "The Old Man and The Sea", "A Portrait of The Artist As a Young Man"]
+
+
+
+main :: IO ()
+main = do
+  putStrLn "What's the titles input file name?"
+  titlesFileName <- getLine
+  
+  -- putStrLn "What's the notSignificants input file name?"  
+  -- notSignificantsFileName <- getLine
+  
+  putStrLn "What's the output file name?"  
+  outputFileName <- getLine
+
+  handle <- openFile titlesFileName ReadWriteMode
+  contents <- hGetContents handle
+  
+  writeFile outputFileName contents
+  hClose handle
+  
+  putStrLn "KWIC Español"
+  interactWithUser []
+  putStrLn "Gracias por usar la app."
+
+type Item = String
+type Items = [Item]
+
+data Command
+  = Quit
+  | Kwic
+  | Help
+
+parseCommand :: String -> Either String Command
+parseCommand line = case words line of
+  ["quit"] -> Right Quit
+  ["help"] -> Right Help
+  ["kwic"] -> Right Kwic
+
+interactWithUser :: Items -> IO ()
+interactWithUser items = do
+  line <- getLine
+  case parseCommand line of
+    Right Help -> do
+      putStrLn "Commands: help, quit, items, add - <item to add>, done <item index>"
+      interactWithUser items
+
+    Right Quit -> do
+      putStrLn "Bye!"
+      pure ()
+
+    Right Kwic  -> do
+      let algo = printKwic titles
+      sequence_ algo
+      interactWithUser items
+
+    Left errMsg -> do
+      putStrLn ("Error: " ++ errMsg)
+      interactWithUser items
