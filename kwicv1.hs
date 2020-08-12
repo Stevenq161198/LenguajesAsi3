@@ -164,7 +164,7 @@ main = do
   hClose handle
   
   putStrLn "KWIC Español"
-  interactWithUser []
+  interactWithUser ([] ++ [outputFileName] ++ [titlesFileName]) 
   putStrLn "Gracias por usar la app."
 
 type Item = String
@@ -186,7 +186,7 @@ interactWithUser items = do
   line <- getLine
   case parseCommand line of
     Right Help -> do
-      putStrLn "Commands: help, quit, items, add - <item to add>, done <item index>"
+      putStrLn "Commands: help, quit, kwic"
       interactWithUser items
 
     Right Quit -> do
@@ -194,8 +194,9 @@ interactWithUser items = do
       pure ()
 
     Right Kwic  -> do
-      let algo = printKwic titles
-      sequence_ algo
+      --let algo = printKwic titles
+      --sequence_ algo
+      print items
       interactWithUser items
 
     Left errMsg -> do
