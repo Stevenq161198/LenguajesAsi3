@@ -164,7 +164,7 @@ main = do
   hClose handle
   
   putStrLn "KWIC Español"
-  interactWithUser ([] ++ [outputFileName] ++ [titlesFileName]) 
+  interactWithUser ([] ++ [outputFileName] ++ [titlesFileName])
   putStrLn "Gracias por usar la app."
 
 type Item = String
@@ -194,9 +194,8 @@ interactWithUser items = do
       pure ()
 
     Right Kwic  -> do
-      --let algo = printKwic titles
-      --sequence_ algo
-      print items
+      let algo = printKwic titles
+      sequence_ algo
       interactWithUser items
 
     Left errMsg -> do
