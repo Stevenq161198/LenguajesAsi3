@@ -52,11 +52,15 @@ Adjectives:
   https://www.paperrater.com/page/lists-of-adjectives
   https://www.talkenglish.com/vocabulary/top-500-adjectives.aspx
 -}
+<<<<<<< Updated upstream
 adjectives = toWords ("attractive bald beautiful chubby clean dazzling drab elegant fancy fit flabby glamorous gorgeous handsome long magnificent muscular plain plump quaint scruffy shapely short skinny stocky ugly unkempt unsightly ashy black blue gray green icy lemon mango orange purple red salmon white yellow alive better careful clever dead easy famous gifted hallowed helpful important inexpensive mealy mushy odd poor powerful rich shy tender unimportant "++ 
                       "uninterested vast wrong aggressive agreeable ambitious brave calm delightful eager faithful gentle happy jolly kind lively nice obedient polite proud silly thankful victorious witty wonderful zealous angry bewildered clumsy defeated embarrassed fierce grumpy helpless itchy jealous lazy mysterious nervous obnoxious panicky pitiful repulsive scary thoughtless uptight worried broad chubby crooked curved deep flat high hollow low narrow refined round shallow "++ 
                       "skinny square steep straight wide big colossal fat gigantic great huge immense large little mammoth massive microscopic miniature petite puny scrawny short small tall teeny tiny crashing deafening echoing faint harsh hissing howling loud melodic noisy purring quiet rapping raspy rhythmic screeching shrilling squeaking thundering tinkling wailing whining whispering ancient brief early fast future late long modern old old-fashioned prehistoric quick rapid "++ 
                       "short slow swift young acidic bitter cool creamy delicious disgusting fresh greasy juicy hot moldy nutritious nutty putrid rancid ripe rotten salty savory sour spicy spoiled stale sweet tangy tart tasteless tasty yummy breezy bumpy chilly cold cool cuddly damaged damp dirty dry flaky fluffy freezing greasy hot icy loose melted prickly rough shaggy sharp slimy sticky strong tight uneven warm weak wet wooden abundant billions enough few full hundreds incalculable "++ 
                       "limited little many most millions numerous scarce some sparse substantial thousands")
+=======
+adjectives = toWords "attractive bald beautiful chubby clean dazzling drab elegant fancy fit flabby glamorous gorgeous handsome long magnificent muscular plain plump quaint scruffy shapely short skinny stocky ugly unkempt unsightly ashy black blue gray green icy lemon mango orange purple red salmon white yellow alive better careful clever dead easy famous gifted hallowed helpful important inexpensive mealy mushy odd poor powerful rich shy tender unimportant uninterested vast wrong aggressive agreeable ambitious brave calm delightful eager faithful gentle happy jolly kind lively nice obedient polite proud silly thankful victorious witty wonderful zealous angry bewildered clumsy defeated embarrassed fierce grumpy helpless itchy jealous lazy mysterious nervous obnoxious panicky pitiful repulsive scary thoughtless uptight worried broad chubby crooked curved deep flat high hollow low narrow refined round shallow skinny square steep straight wide big colossal fat gigantic great huge immense large little mammoth massive microscopic miniature petite puny scrawny short small tall teeny tiny crashing deafening echoing faint harsh hissing howling loud melodic noisy purring quiet rapping raspy rhythmic screeching shrilling squeaking thundering tinkling wailing whining whispering ancient brief early fast future late long modern old old-fashioned prehistoric quick rapid short slow swift young acidic bitter cool creamy delicious disgusting fresh greasy juicy hot moldy nutritious nutty putrid rancid ripe rotten salty savory sour spicy spoiled stale sweet tangy tart tasteless tasty yummy breezy bumpy chilly cold cool cuddly damaged damp dirty dry flaky fluffy freezing greasy hot icy loose melted prickly rough shaggy sharp slimy sticky strong tight uneven warm weak wet wooden abundant billions enough few full hundreds incalculable limited little many most millions numerous scarce some sparse substantial thousands"
+>>>>>>> Stashed changes
 
 {-
 Adverbs:
@@ -66,17 +70,28 @@ Adverbs:
   https://www.talkenglish.com/vocabulary/top-250-adverbs.aspx
   https://usefulenglish.ru/writing/list-of-adverbs
 -}
+<<<<<<< Updated upstream
 
 adverbs = toWords "generally generously gently genuinely girlishly gladly gleefully gracefully graciously gradually gratefully greatly greedily grimly grudgingly"
+=======
+adverbs = toWords "boldly bravely brightly cheerfully deftly devotedly eagerly elegantly faithfully fortunately gleefully gracefully happily honestly innocently justly kindly merrily obediently perfectly politely powerfully safely victoriously warmly vivaciously angrily anxiously badly boastfully foolishly hopelessly irritably jealously lazily obnoxiously poorly rudely selfishly wearily always eventually finally frequently hourly never occasionally often rarely regularly seldom sometimes usually weekly yearly promptly quickly rapidly slowly speedily tediously accidentally awkwardly blindly coyly crazily defiantly deliberately doubtfully dramatically dutifully enormously evenly exactly hastily hungrily inquisitively loosely madly mortally mysteriously nervously only seriously shakily sharply silently solemnly sternly technically unexpectedly wildly"
+
+>>>>>>> Stashed changes
 
 {-
 Pronouns:
   https://www.thefreedictionary.com/List-of-pronouns.htm
+<<<<<<< Updated upstream
   https://www.english-grammar-revolution.com/list-of-pronouns.html
   https://www.really-learn-english.com/list-of-pronouns.html
   https://www.ef.com/ca/english-resources/english-grammar/pronouns/
   https://www.englishclub.com/vocabulary/pronouns-list.php
   https://www.englishclub.com/vocabulary/pronouns-type.php
+=======
+  https://www.really-learn-english.com/list-of-pronouns.html
+  https://www.ef.com/ca/english-resources/english-grammar/pronouns/
+  https://www.englishclub.com/vocabulary/pronouns-list.php
+>>>>>>> Stashed changes
 -}
 pronouns = toWords "all another any anybody anyone anything aught both each each either enough everybody everyone everything few he her hers herself him himself his I it itself many me mine most myself naught neither no nobody none nothing nought one other others ought ours ourself ourselves several she some somebody someone something such suchlike that thee theirs theirself theirselves them themself themselves there these they thine this those thou thy thyself us we what whatever whatsoever whether which whichever whichsoever who whoever whom whomever whomso whomsoever whose whosever whosesoever whoso whosoever ye yon you yours yourself yourselves"
 
@@ -86,42 +101,52 @@ Conjunctions:
   https://www.englishclub.com/grammar/conjunctions.htm
   https://www.grammarly.com/blog/conjunctions/
   https://dictionary.cambridge.org/grammar/british-grammar/conjunctions
-  https://www.smart-words.org/linking-words/conjunctions.html
 -}
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 conjunctions = toWords "after also although and as because before but either for how if neither nor once only or since so than that though till until when where whereas whether while yet"
 
--- la lista de palabras no significativas en los títulos puede parecer arbitraria, pero es conveniente 
+
+-- lista de palabras no significativas, se unen todas las listas en una sola
 notSignificants = articles ++ prepositions ++ adjectives ++ adverbs ++ pronouns ++ conjunctions
+
 
 -- rotations recibe un título, como lista de palabras, y produce todas las rotaciones, sin importar si hay palabras no significativas
 rotations xs = [ drop i xs ++ take i xs | i <- [0 .. n] ]
                where n = (length xs) - 1
 
+
 -- Auxiliares para convertir palabras a minúsculas
 lowercase = map toLower 
 lowercases = map lowercase
+
 
 -- sigRotations recibe un título, como lista de palabras, y produce todas las rotaciones que comiencen con palabras significativas
 sigRotations xs = [ drop i xs ++ take i xs | i <- [0 .. n], not ((lowercase (xs!!i)) `elem` notSignificants) ]
                   where n = (length xs) - 1
 
+
 -- titSigRotations es como sigRotations, pero pone primero el título de la obra, antes de todas las rotaciones significativas
 titSigRotations xs = xs : [ drop i xs ++ take i xs | i <- [0 .. n], not ((lowercase (xs!!i)) `elem` notSignificants) ]
                    where n = (length xs) - 1
 
+
 -- putSpaces coloca un espacio en blanco entre las palabras presentes en una lista de palabras, y devuelve una hilera
 putSpaces xss = tail (concat (map (' ':) xss))
 
--- sep pone una secuencia de caracteres, "><", para indicar que los caracteres a la izquierda de ">" están
--- al final del título original, mientras que los caracteres a la derecha de ">" están al inicio del título original
+
+-- sep pone "><" colocando a la derecha los caracteres que estan al inicio del titulo y a la izquierda los del final
 sep xs = init xs ++ [last xs ++ " ><"]
 
+
+-- 
 kwic = nub . sort . concat . map pre
        where pre ys = map putSpaces (sigRotations (sep (toWords ys)))
 
 kwicTitles = nub . sort . concat . map pre
-             where pre ys = map putSpaces (titSigRotations (sep (toWords ys)))
+       where pre ys = map putSpaces (titSigRotations (sep (toWords ys)))
 
 
 --Toma linea por linea e imprime cada indice del Kwic
@@ -129,8 +154,13 @@ printKwic ts = map putStrLn (kwic ts)
 
 printKwicTitles ts = map putStrLn (kwicTitles ts)
 
+<<<<<<< Updated upstream
 -- ********   PRUEBAS *****
 -- titles = ["As falls Wichita, so falls Wichita Falls", "The Yellow Submarine", "Kind of Blue", "The Mythical Man-Month"]
+=======
+-- main = sequence_ (printKwic titles) -- titles está alambrado
+
+>>>>>>> Stashed changes
 titles = ["Descent of Man", "The Ascent of Man", "The Old Man and The Sea", "A Portrait of The Artist As a Young Man"]
 
 
@@ -169,10 +199,16 @@ interactWithUser items = do
       pure ()
 
     Right Kwic  -> do
+<<<<<<< Updated upstream
       let rotations = printKwic titles
       sequence_ rotations
+=======
+      let algo = printKwicTitles titles
+      sequence_ algo
+>>>>>>> Stashed changes
       interactWithUser items
 
     Left errMsg -> do
       putStrLn ("Error: " ++ errMsg)
       interactWithUser items
+      

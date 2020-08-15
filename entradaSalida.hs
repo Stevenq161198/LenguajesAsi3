@@ -23,7 +23,7 @@ main = do
     putStrLn "Cuá es el nombre del archivo de palabras no Significativas en Inglés?"  
     notSignificantsFileName <- getLine
     
-    putStrLn "Cuál es el nombre del archivo de salida?"  
+    putStrLn "Cuál es el nombre del archivo de salida?"
     outputFileName <- getLine
 
     handle <- openFile titlesFileName ReadWriteMode
@@ -31,4 +31,3 @@ main = do
     writeFile outputFileName contents
 
     hClose handle
-

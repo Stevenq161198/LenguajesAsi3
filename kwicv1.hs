@@ -120,7 +120,7 @@ kwic = nub . sort . concat . map pre
        where pre ys = map putSpaces (sigRotations (sep (toWords ys)))
 
 kwicTitles = nub . sort . concat . map pre
-             where pre ys = map putSpaces (titSigRotations (sep (toWords ys)))
+       where pre ys = map putSpaces (titSigRotations (sep (toWords ys)))
 
 -- sequence_ tomada de Hudak, Peterson, Fasel. A Gentle Introduction to Haskell 98
 {- sequence_ = foldr (>>) (return ())
