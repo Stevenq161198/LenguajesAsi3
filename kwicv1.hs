@@ -139,7 +139,7 @@ printKwicTitles ts = map putStrLn (kwicTitles ts)
 -- main = sequence_ (printKwic titles) -- titles está alambrado
 -- main = sequence_ (printKwic titles) -- titles está alambrado
 
--- PRUEBAS]
+-- PRUEBAS
 -- Títulos, para probar
 -- titles = ["As falls Wichita, so falls Wichita Falls", "The Yellow Submarine", "Kind of Blue", "The Mythical Man-Month"]
 titles = ["Descent of Man", "The Ascent of Man", "The Old Man and The Sea", "A Portrait of The Artist As a Young Man"]
