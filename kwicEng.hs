@@ -35,7 +35,8 @@ notSignificants :: [Char] -> HashT
 notSignificants nsig= HashSet.fromList(splitOn "," (lowercase nsig))
 
 
-
+--Una version mejorada de toWords, convierte en minuscula, separada por salto de linea 
+--y devuelve una lista de listas de titulos
 lowTitles :: [Char] -> [[[Char]]]
 lowTitles ntit = map (splitOn " " )(splitOn "\n" (lowercase ntit))
 
@@ -67,6 +68,8 @@ funBonita untitulo = do
 
   (a !! 1) ++ " " ++ c ++ " " ++ intercalate " "(tail b)
 
+--Ajusta cada título insertando la cantidad de espacios necesarios, esto lo hace restandole
+--el largo de cada uno al largo del mayor título, para saber donde insertar cada uno.
 
 alignOn :: [String] -> [String]
 alignOn lines = map padline lines
@@ -78,6 +81,8 @@ alignOn lines = map padline lines
         offset = longestLengthBeforeChar - (length (partBeforechar line))
 
 
+--Calcula el "peor caso", es decir, el título de mayor tamaño en una lista de titulos
+
 longestStrings :: [String] -> [String]
 longestStrings = go [] 0
   where
@@ -88,12 +93,14 @@ longestStrings = go [] 0
     | otherwise     = go acc n xs
 
 
+--Toma los titulos, los inserta en una estructura de datos Hash, le calcula las rotaciones a los titulos
+--y los separa por espacios.
 
 kwic :: HashSet String -> [[Char]] -> [[Char]]
 kwic hash titulos = do 
     let sigs = map putSpaces (sigRotations hash(sep titulos))
-    let k = (nub sigs)
-    k
+    let kwiwFormat = (nub sigs)
+    kwiwFormat
 
 
 main :: IO ()
@@ -116,10 +123,11 @@ main = do
     contentS <- readFile notSignificantsFileName
     let notSig = notSignificants contentS
 
-    let kwicpusha = map funBonita(concat(map(kwic notSig) titles))
+    let kwicBasic = concat(map(kwic notSig) titles)
 
     let kwicAling = alignOn(map funBonita(concat(map(kwic notSig) titles)))
 
-    writeFile outputFileName (intercalate "\n" kwicpusha)
+    writeFile outputFileName (intercalate "\n" kwicBasic)
     writeFile outputFileName2 (intercalate "\n" kwicAling)
       
+
