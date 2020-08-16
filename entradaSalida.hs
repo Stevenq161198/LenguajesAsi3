@@ -15,19 +15,20 @@ import Data.List
 type String = [Char]
 
 --Programa que maneja la entrada y salida de archivos
-
+toWords :: [Char] -> [[Char]] -- String -> [String]
+toWords [] = []
+toWords (x:xs) | x == ' '  = toWords (dropWhile (' ' ==) xs)
+               | otherwise = (x:takeWhile (' ' /=) xs) : toWords (dropWhile (' ' /=) xs)
 main = do
     putStrLn "Cuál es el nombre del archivo de Títulos?"
     titlesFileName <- getLine
     
-    putStrLn "Cuá es el nombre del archivo de palabras no Significativas en Inglés?"  
-    notSignificantsFileName <- getLine
+    -- putStrLn "Cuá es el nombre del archivo de palabras no Significativas en Inglés?"  
+    -- notSignificantsFileName <- getLine
     
     putStrLn "Cuál es el nombre del archivo de salida?"
     outputFileName <- getLine
 
-    handle <- openFile titlesFileName ReadWriteMode
-    contents <- hGetContents handle
-    writeFile outputFileName contents
-
-    hClose handle
+    contents <- readFile titlesFileName
+    let h = toWords contents
+    writeFile outputFileName (intercalate "\n" h)

@@ -129,20 +129,11 @@ titles = ["El Descenso del Mal", "El Ascenso del Hombre", "El viajo y el Mar", "
 
 -- https://es.wikipedia.org/wiki/Preposición
 -- http://www.auladiez.com/ejercicios/16_preposiciones.php
-<<<<<<< Updated upstream
 proposiciones = toWords2 "a_ante bajo_cabe_con_contra de_desde_durante_en_entre_hacia_hasta_mediante_para_por_según_sin_so_sobre_tras_versus_vía"
-=======
-proposiciones = "a_ante bajo_cabe_con_contra de_desde_durante_en_entre_hacia_hasta_mediante_para_por_según_sin_so_sobre_tras_versus_vía"
-
--- texto sin tildes para haskell pueda hacer un print bonito
-conjuciones = "y_e_u_delante de_ni_no_solo_sino_tambien_tanto como_asi como_igual que_lo mismo que_pero_mas_empero_sino_mientras que_delante de_o bien_bien_ya sea_fuera"
-
->>>>>>> Stashed changes
 
 --https://englishlive.ef.com/es-mx/blog/laboratorio-de-gramatica/adjetivos-en-ingles/
 --https://www.practicaespanol.com/wp-content/uploads/Adjetivos-listado-PDF.pdf
 --https://www.aprendemasingles.com/2012/06/12/lista-de-60-adjetivos-comunes-con-traduccion-pdf/
-<<<<<<< Updated upstream
 adjetivos = toWords ("ácido enfadado dormido despierto malo precioso agrio brillante barato limpio claro frío fresco cruel profundo "++
             "delicado diferente sucio seco temprano agotado falso lejos gordo débil llano tonto estúpido libre lleno generoso bueno estupendo atractivo feliz duro saludable "++
             "pesado alto hueco caliente enorme hambriento enfermo izquierda ligero largo ruidoso bonito tacaño desordenado natural estrecho cerca necesario nuevo viejo abierto "++
@@ -161,15 +152,6 @@ articulos = ["el","la","lo","los","las", "un", "unos", "una", "unas"]
 adverbios = toWords ("ahora antes después tarde luego ayer temprano ya todavía anteayer aún pronto hoy aquí ahí allí cerca lejos fuera dentro alrededor aparte"++
             "encima debajo delante detrás así bien mal despacio deprisa como mucho poco muy casi todo nada algo medio demasiado bastante más menos además"++
             "incluso también sí también asimismo no tampoco jamás nunca acaso quizá quizás tal vez")
-=======
-
-adjetivos ="ácido enfadado dormido despierto malo precioso agrio brillante barato limpio claro frío fresco cruel profundo 
-            delicado diferente sucio seco temprano agotado falso lejos gordo débil llano tonto estúpido libre lleno generoso bueno estupendo atractivo feliz duro saludable 
-            pesado alto hueco caliente enorme hambriento enfermo izquierda ligero largo ruidoso bonito tacaño desordenado natural estrecho cerca necesario nuevo viejo abierto
-            contrario paralelo pobre privado rápido tranquilo preparado rico derecha correcto áspero triste seguro aserio filado corto cerrado simple fino  delicado suave sólido
-            especial picante empinado pegajoso recto  directo extraño fuerte repentino dulce grueso delgado ajustado ceñido cansado verdadero feo violento caluroso caliente débil
-            húmedo ancho sabio erróneo jóven"
->>>>>>> Stashed changes
 
 --Fuente: https://www.ejemplos.co/50-ejemplos-de-pronombres/#ixzz6UGrJrQ6m
 pronombres = toWords2 ("yo_tú_él_usted_ustedes_nosotros_nosotras_vosotros_vosotras_ellos_ellas_me_te_nos_se__mi_mis_mío_mía_míos_mías_tu_tus_tuyo_tuya_tuyos_"++
