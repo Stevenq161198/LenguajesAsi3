@@ -25,6 +25,7 @@ import Control.Monad (when)
 import Data.List (maximumBy)
 import Data.Ord (comparing)
 import Data.HashSet as HashSet hiding(map, sort)
+import System.Directory (doesFileExist)
 
 type HashT = HashSet String
 -- ************** Conjunto de Palabras no Significativas del Lenguaje Inglés *********
@@ -80,6 +81,15 @@ alignOn lines = map padline lines
       where
         offset = longestLengthBeforeChar - (length (partBeforechar line))
 
+check :: (FilePath -> IO Bool) -> FilePath -> IO ()
+check p s = do
+  result <- p s
+  putStrLn $
+    s ++
+    if result
+      then " el archivo ya existe"
+      else " el archivo no existe"
+
 
 --Toma los titulos, los inserta en una estructura de datos Hash, le calcula las rotaciones a los titulos
 --y los separa por espacios.
@@ -91,12 +101,14 @@ kwic hash titulos = do
     kwiwFormat
 
 
+
+
 main :: IO ()
 main = do
     putStrLn "Cuál es el nombre del archivo de Títulos?"
     titlesFileName <- getLine
     
-    putStrLn "Cuá es el nombre del archivo de palabras no Significativas en Inglés?"  
+    putStrLn "Cuál es el nombre del archivo de palabras no Significativas en Inglés?"  
     notSignificantsFileName <- getLine
 
     putStrLn "Cuál es el nombre del archivo de salida?"
@@ -114,6 +126,11 @@ main = do
     let kwicBasic = concat(map(kwic notSig) titles)
 
     let kwicAling = alignOn(map funBonita(concat(map(kwic notSig) titles)))
+
+    let outputFile = check doesFileExist outputFileName
+    outputFile
+    let outputFile2 = check doesFileExist outputFileName2
+    outputFile2
 
     writeFile outputFileName (intercalate "\n" kwicBasic)
     writeFile outputFileName2 (intercalate "\n" kwicAling)

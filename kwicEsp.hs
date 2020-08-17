@@ -7,15 +7,6 @@
     - Fecha de Entrega: 17-08-2020
 -}
 
---Librerias para el correcto funcionamiento de nuestro programa
-import Data.Char
-import Data.List
-import System.IO
-import Control.Monad (when)
-import qualified Data.Text    as T
-import qualified Data.Text.IO as T
-
-
 {- 
 Referencias:
   http://www.auladiez.com/fichas/47_adverbios.php
@@ -28,6 +19,7 @@ Referencias:
   http://www.auladiez.com/ejercicios/16_preposiciones.php
 -}
 
+--Librerias para el correcto funcionamiento de nuestro programa
 import Data.Char
 import Data.List
 import Data.List.Split
@@ -36,6 +28,7 @@ import Control.Monad (when)
 import Data.List (maximumBy)
 import Data.Ord (comparing)
 import Data.HashSet as HashSet hiding(map, sort)
+import System.Directory (doesFileExist)
 
 type HashT = HashSet String
 -- ************** Conjunto de Palabras no Significativas del Lenguaje Español *********
@@ -95,6 +88,14 @@ alignOn lines = map padline lines
       where
         offset = longestLengthBeforeChar - (length (partBeforechar line))
 
+check :: (FilePath -> IO Bool) -> FilePath -> IO ()
+check p s = do
+  result <- p s
+  putStrLn $
+    s ++
+    if result
+      then " el archivo ya existe"
+      else " el archivo no existe"
 
 --Toma los titulos, los inserta en una estructura de datos Hash, le calcula las rotaciones a los titulos
 --y los separa por espacios.
@@ -128,6 +129,11 @@ main = do
     let kwicBasic = concat(map(kwic notSig) titles)
 
     let kwicAling = alignOn(map funBonita(concat(map(kwic notSig) titles)))
+
+    let outputFile = check doesFileExist outputFileName
+    outputFile
+    let outputFile2 = check doesFileExist outputFileName2
+    outputFile2
 
     writeFile outputFileName (intercalate "\n" kwicBasic)
     writeFile outputFileName2 (intercalate "\n" kwicAling)
