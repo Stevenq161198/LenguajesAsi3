@@ -81,18 +81,6 @@ alignOn lines = map padline lines
         offset = longestLengthBeforeChar - (length (partBeforechar line))
 
 
---Calcula el "peor caso", es decir, el título de mayor tamaño en una lista de titulos
-
-longestStrings :: [String] -> [String]
-longestStrings = go [] 0
-  where
-  go acc _ []       = acc  -- base case
-  go acc n (x:xs)
-    | length x > n  = go [x] (length x) xs
-    | length x == n = go (x:acc) n xs
-    | otherwise     = go acc n xs
-
-
 --Toma los titulos, los inserta en una estructura de datos Hash, le calcula las rotaciones a los titulos
 --y los separa por espacios.
 
