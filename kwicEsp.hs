@@ -131,3 +131,40 @@ main = do
 
     writeFile outputFileName (intercalate "\n" kwicBasic)
     writeFile outputFileName2 (intercalate "\n" kwicAling)
+
+
+-- ********** Conjuntos de palabras ********** --
+-- Estan en el archivo .txt, esta es solo un ejemplo de que hay en ese otro archivo:
+
+-- Títulos, para probar
+titles = ["El Descenso del Mal", "El Ascenso del Hombre", "El viajo y el Mar", "Un recuadro del artista joven", "El Submarino Amarillo"]
+
+
+proposiciones = "a_ante bajo_cabe_con_contra de_desde_durante_en_entre_hacia_hasta_mediante_para_por_según_sin_so_sobre_tras_versus_vía"
+
+
+adjetivos =  ("ácido enfadado dormido despierto malo precioso agrio brillante barato limpio claro frío fresco cruel profundo "++
+            "delicado diferente sucio seco temprano agotado falso lejos gordo débil llano tonto estúpido libre lleno generoso bueno estupendo atractivo feliz duro saludable "++
+            "pesado alto hueco caliente enorme hambriento enfermo izquierda ligero largo ruidoso bonito tacaño desordenado natural estrecho cerca necesario nuevo viejo abierto "++
+            "contrario paralelo pobre privado rápido tranquilo preparado rico derecha correcto áspero triste seguro aserio filado corto cerrado simple fino  delicado suave sólido "++
+            "especial picante empinado pegajoso recto  directo extraño fuerte repentino dulce grueso delgado ajustado ceñido cansado verdadero feo violento caluroso caliente débil "++
+            "húmedo ancho sabio erróneo jóven")
+
+conjuciones =  "y_e_u_delande de_ni_no_solo_sino_tambien_tanto como_asi como_igual que_lo mismo que_pero_mas_empero_sino_mientras que_delante de_o bien_bien_ya sea_fuera"
+
+
+articulos = ["el","la","lo","los","las", "un", "unos", "una", "unas"]
+
+
+  
+
+adverbios = ("ahora antes después tarde luego ayer temprano ya todavía anteayer aún pronto hoy aquí ahí allí cerca lejos fuera dentro alrededor aparte"++
+            "encima debajo delante detrás así bien mal despacio deprisa como mucho poco muy casi todo nada algo medio demasiado bastante más menos además"++
+            "incluso también sí también asimismo no tampoco jamás nunca acaso quizá quizás tal vez")
+
+--Fuente: 
+pronombres = ("yo_tú_él_usted_ustedes_nosotros_nosotras_vosotros_vosotras_ellos_ellas_me_te_nos_se__mi_mis_mío_mía_míos_mías_tu_tus_tuyo_tuya_tuyos_"++
+            "tuyas_su_sus_suyo_suya_suyos_suyas_nuestro_nuestra_nuestros_nuestras_vuestro_vuestra_vuestros_vuestras_este_ese_aquél_esta_esa_aquella_estos_"++
+            "esos_aquellos_estas_esas_aquellas_esto_eso_aquello_quien_quienes_el cual_los cuales_la cual_las cuales_lo cual_cuyo_cuyos_cuyas_cuya_donde_qué_quién_"++
+            "quiénes_cuál_cuáles_cuánto_cuántos_cuánta_cuántas_dónde_cómo_mucho_muchos_mucha_muchas_poco_pocos_poca_pocas_tanto_tantos_tanta_tantas_bastante_bastantes_"++
+            "demasiado_demasiados_demasiada_demasiadas_alguno_algunos_alguna_algunas_ninguno_ninguna_algo_nada")
